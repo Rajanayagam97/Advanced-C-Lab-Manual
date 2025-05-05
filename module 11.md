@@ -107,10 +107,45 @@ Algorithm:
 5.	Use a for loop to iterate over the queries.
  
 Program:
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    int noshel, noque;
+    scanf("%d %d", &noshel, &noque);
+    int *nobookarr = (int *)calloc(noshel, sizeof(int));
+    int **shelarr = (int **)malloc(noshel * sizeof(int *));
+    for (int i = 0; i < noshel; i++) shelarr[i] = NULL;
+    for (int i = 0; i < noque; i++) {
+        int type;
+        scanf("%d", &type);
+        if (type == 1) {
+            int shelf, pages;
+            scanf("%d %d", &shelf, &pages);
+            int books = nobookarr[shelf];
+            shelarr[shelf] = (int *)realloc(shelarr[shelf], (books + 1) * sizeof(int));
+            shelarr[shelf][books] = pages;
+            nobookarr[shelf]++;
+        } else if (type == 2) {
+            int shelf, book;
+            scanf("%d %d", &shelf, &book);
+            printf("%d\n", shelarr[shelf][book]);
+        } else if (type == 3) {
+            int shelf;
+            scanf("%d", &shelf);
+            printf("%d\n", nobookarr[shelf]);
+        }
+    }
+    for (int i = 0; i < noshel; i++) free(shelarr[i]);
+    free(shelarr);
+    free(nobookarr);
+    return 0;
+}
 
+```
 Output:
-//paste your output here
+![image](https://github.com/user-attachments/assets/8ec04c51-44f6-47b8-a056-12940d99b774)
+
 
 
 Result:
