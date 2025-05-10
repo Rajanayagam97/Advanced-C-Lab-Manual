@@ -93,11 +93,30 @@ Algorithm:
  
 Program:
 ```
+struct Node
+ {
+   float data;
+   struct Node *next;
+ }*front = NULL, *rear = NULL;
+ void display(){
+    if(front == NULL){
+        printf("queue is empty\n");
+    }
+    else{
+        struct Node *temp = front;
+        printf("queue elements:\n");
+        while(temp != NULL){
+             printf("%.2f\n",temp->data);
+             temp = temp->next;
+        }
+    }
+}
+```
 
 
 Output:
+![image](https://github.com/user-attachments/assets/65780f6c-e585-49ba-832a-1096a7ddb962)
 
-//paste your output here
 
 Result:
 Thus, the program to display queue elements using linked list is verified successfully.
@@ -118,12 +137,33 @@ Algorithm:
 6.	End of Enqueue Operation
  
 Program:
-
-//type your code here
+```
+ struct Node
+ {
+   float data;
+   struct Node *next;
+ }*front=NULL,*rear=NULL;
+ void enqueue(float data)
+ {
+   struct Node *newNode;
+   newNode=(struct Node*)malloc(sizeof(struct Node));
+   newNode->data=data;
+   newNode->next=NULL;
+   if(front==NULL)
+   {
+      front=rear=newNode;
+   }
+   else
+   {
+      rear->next=newNode;
+      rear=newNode;
+   }
+ }
+```
 
 Output:
+![image](https://github.com/user-attachments/assets/e390d62a-8ef3-43e2-85b4-1cfeafadcd1e)
 
-//paste your output here
 
 Result:
 Thus, the program to insert elements in queue using linked list is verified successfully.
@@ -145,12 +185,20 @@ o	If the queue is empty (i.e., the front pointer is NULL), return an error or a 
 o	If the queue is not empty, return the data stored in the front node of the linked list (i.e., the element at the head of the queue).
 
 Program:
-
-//type your code here
-
+```
+ struct Node
+ {
+   int data;
+   struct Node *next;
+ }*front=NULL,*rear=NULL;
+ void peek()
+ {
+    printf("%d\n", front->data);
+ }
+```
 Output:
+![image](https://github.com/user-attachments/assets/c11e2eaf-eccc-4dbf-b6db-67f5bea8b81a)
 
-//paste your output here
 
 
 
